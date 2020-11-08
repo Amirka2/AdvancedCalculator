@@ -15,7 +15,7 @@ namespace Таблица_значений_функции
                 check = false;
             return check;
         }
-        static string ReturnNum (string str)
+        static string ReturnNumber (string str)
         {
             string[] arr = new string[2];
             if (str.Contains(":"))
@@ -50,66 +50,64 @@ namespace Таблица_значений_функции
         }*/
         static void Main(string[] args)
         {
-            var str = "";
             var text = new List<string> { };
             var funcArr = new List<string> { };
             double addition = 0, start = 0, end = 0;
-            using (var sr = new StreamReader(@"input.txt", true))
+            using (var sr = new StreamReader(@"input.txt"))
             {
-                int j = 0;
+                string str = String.Empty;
                 while ((str = sr.ReadLine()) != null)
                 {
-                    str = sr.ReadLine();
-                    text[j] = str;
-                    j++;
+                    text.Add(str);
                 }
             }
 
-            for (int m = 0; m < text.Count - 1; m++)
+            for (int m = 0; m < text.Count; m++)
             {
                 if (string.IsNullOrWhiteSpace(text[m]))
                 {
                     Console.WriteLine("строка пуста!");
                 }
-                else if ((CheckText(text[m])) && (CheckNumber(ReturnNum(text[m]))))
+                else if ((CheckText(text[m])) && (CheckNumber(ReturnNumber(text[m]))))
                 {
                     if (text[m].Contains("Шаг"))
                     {
-                        addition = Convert.ToDouble(ReturnNum(text[m]));
+                        addition = Convert.ToDouble(ReturnNumber(text[m]));
+                        Console.WriteLine("add = " + addition);
                     }
                     else if (text[m].Contains("Начало"))
                     {
-                        start = Convert.ToDouble(ReturnNum(text[m]));
+                        start = Convert.ToDouble(ReturnNumber(text[m]));
+                        Console.WriteLine("start = " + start);
                     }
                     else if (text[m].Contains("Конец"))
                     {
-                        end = Convert.ToDouble(ReturnNum(text[m]));
+                        end = Convert.ToDouble(ReturnNumber(text[m]));
+                        Console.WriteLine("end = " + end);
                     }
-                    else if (text[m].Contains("f"))
+                }
+                else if (text[m].Contains("f"))
+                {
+                    string expression = ReturnNumber(text[m]);  //Получаем выражение
+                    Console.WriteLine("expression = " + expression);
+                    while (text[m].Contains("  "))
                     {
-                        string expression = ReturnNum(text[m]);  //Получаем выражение
-                        while (text[m].Contains("  "))
-                        {
-                            text[m] = text[m].Replace("  ", " ");
-                        }
-                        var els = text[m].Split(' ');
-                        funcArr.AddRange(els);
-                        foreach (var el in funcArr)
-                        {
-                            Console.Write(el);
-                        }
+                        text[m] = text[m].Replace("  ", " ");
                     }
+                    var els = text[m].Split(' ');
+                    funcArr.AddRange(els);
+                }
+            }
+
+            using (var sw = new StreamWriter("output.txt", true))
+            {
+                foreach (var el in funcArr)
+                {
+                    sw.Write(el);
                 }
             }
             
-            int i = Convert.ToInt32(start);
-            double result;
-            while (i <= end)
-            {
-                result = addition + addition;
-                Console.WriteLine("{0} {1}", i, result);
-                i++;
-            }
+            
         }
     }
 }
