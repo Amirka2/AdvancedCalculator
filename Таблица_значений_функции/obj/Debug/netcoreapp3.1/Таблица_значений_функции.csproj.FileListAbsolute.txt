@@ -1,0 +1,12 @@
+/Users/user/RiderProjects/AdvancedCalculator/Таблица_значений_функции/bin/Debug/netcoreapp3.1/Таблица_значений_функции.deps.json
+/Users/user/RiderProjects/AdvancedCalculator/Таблица_значений_функции/bin/Debug/netcoreapp3.1/Таблица_значений_функции.runtimeconfig.json
+/Users/user/RiderProjects/AdvancedCalculator/Таблица_значений_функции/bin/Debug/netcoreapp3.1/Таблица_значений_функции.runtimeconfig.dev.json
+/Users/user/RiderProjects/AdvancedCalculator/Таблица_значений_функции/bin/Debug/netcoreapp3.1/Таблица_значений_функции.dll
+/Users/user/RiderProjects/AdvancedCalculator/Таблица_значений_функции/bin/Debug/netcoreapp3.1/Таблица_значений_функции.pdb
+/Users/user/RiderProjects/AdvancedCalculator/Таблица_значений_функции/obj/Debug/netcoreapp3.1/Таблица_значений_функции.csprojAssemblyReference.cache
+/Users/user/RiderProjects/AdvancedCalculator/Таблица_значений_функции/obj/Debug/netcoreapp3.1/Таблица_значений_функции.AssemblyInfoInputs.cache
+/Users/user/RiderProjects/AdvancedCalculator/Таблица_значений_функции/obj/Debug/netcoreapp3.1/Таблица_значений_функции.AssemblyInfo.cs
+/Users/user/RiderProjects/AdvancedCalculator/Таблица_значений_функции/obj/Debug/netcoreapp3.1/Таблица_значений_функции.csproj.CoreCompileInputs.cache
+/Users/user/RiderProjects/AdvancedCalculator/Таблица_значений_функции/obj/Debug/netcoreapp3.1/Таблица_значений_функции.dll
+/Users/user/RiderProjects/AdvancedCalculator/Таблица_значений_функции/obj/Debug/netcoreapp3.1/Таблица_значений_функции.pdb
+/Users/user/RiderProjects/AdvancedCalculator/Таблица_значений_функции/obj/Debug/netcoreapp3.1/Таблица_значений_функции.genruntimeconfig.cache

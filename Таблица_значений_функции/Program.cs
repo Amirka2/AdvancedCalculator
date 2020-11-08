@@ -41,21 +41,12 @@ namespace Таблица_значений_функции
 
             return Double.Parse(input);
         }
-
-        /*static string[] ReturnExpresionArray(string input)
-        {
-            var elements = new List<string> { };
-            input = input.Trim();
-
-            return input;
-        }*/
         static double ReturnYValue(string expression, double x)
         {
             expression = expression.Replace("x", x.ToString());
             double y = RPN.Calculate(expression);
             return y;
         }
-
         static int GetMaxNumLength(double a, double b)
         {
             if (a >= b)
@@ -63,8 +54,6 @@ namespace Таблица_значений_функции
             else
                 return b.ToString().Length;
         }
-
-
         static void Main(string[] args)
         {
             var text = new List<string> { };
@@ -114,14 +103,7 @@ namespace Таблица_значений_функции
                     expression = expr;
                 }
             }
-
-            int spaces = 0;
-            for (double i = start; i <= end; i++)
-            {
-                if (GetMaxNumLength(i, ReturnYValue(expression, i)) > spaces)
-                    spaces = GetMaxNumLength(i, ReturnYValue(expression, i));
-            }
-
+            
             using (var sw = new StreamWriter("output.txt", true))
             {
                 sw.WriteLine();
