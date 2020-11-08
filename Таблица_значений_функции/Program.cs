@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Таблица_значений_функции
 {
@@ -48,6 +49,22 @@ namespace Таблица_значений_функции
 
             return input;
         }*/
+        static double ReturnYValue(string expression, double x)
+        {
+            expression = expression.Replace("x", x.ToString());
+            double y = RPN.Calculate(expression);
+            return y;
+        }
+
+        static int GetMaxNumLength(double a, double b)
+        {
+            if (a >= b)
+                return a.ToString().Length;
+            else
+                return b.ToString().Length;
+        }
+
+
         static void Main(string[] args)
         {
             var text = new List<string> { };
@@ -61,7 +78,8 @@ namespace Таблица_значений_функции
                     text.Add(str);
                 }
             }
-
+            
+            string expression = String.Empty;
             for (int m = 0; m < text.Count; m++)
             {
                 if (string.IsNullOrWhiteSpace(text[m]))
@@ -73,41 +91,46 @@ namespace Таблица_значений_функции
                     if (text[m].Contains("Шаг"))
                     {
                         addition = Convert.ToDouble(ReturnNumber(text[m]));
-                        Console.WriteLine("add = " + addition);
                     }
                     else if (text[m].Contains("Начало"))
                     {
                         start = Convert.ToDouble(ReturnNumber(text[m]));
-                        Console.WriteLine("start = " + start);
                     }
                     else if (text[m].Contains("Конец"))
                     {
                         end = Convert.ToDouble(ReturnNumber(text[m]));
-                        Console.WriteLine("end = " + end);
                     }
                 }
                 else if (text[m].Contains("f"))
                 {
-                    string expression = ReturnNumber(text[m]);  //Получаем выражение
-                    Console.WriteLine("expression = " + expression);
-                    while (text[m].Contains("  "))
+                    string expr = ReturnNumber(text[m]);  //Получаем выражение
+                    expr = expr.Trim();
+                    while (expr.Contains("  "))
                     {
-                        text[m] = text[m].Replace("  ", " ");
+                        expr = expr.Replace("  ", " ");
                     }
-                    var els = text[m].Split(' ');
+                    var els = expr.Split(' ');
                     funcArr.AddRange(els);
+                    expression = expr;
                 }
+            }
+
+            int spaces = 0;
+            for (double i = start; i <= end; i++)
+            {
+                if (GetMaxNumLength(i, ReturnYValue(expression, i)) > spaces)
+                    spaces = GetMaxNumLength(i, ReturnYValue(expression, i));
             }
 
             using (var sw = new StreamWriter("output.txt", true))
             {
-                foreach (var el in funcArr)
+                sw.WriteLine();
+                for (double i = start, j = 0; i <= end; i++, j++)
                 {
-                    sw.Write(el);
+                    double x = i, y = ReturnYValue(expression, i);
+                    sw.WriteLine($"x = {x}, y = {y}");
                 }
             }
-            
-            
         }
     }
 }
