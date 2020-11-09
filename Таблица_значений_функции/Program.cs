@@ -107,7 +107,7 @@ namespace Таблица_значений_функции
             using (var sw = new StreamWriter("output.txt", true))
             {
                 sw.WriteLine();
-                for (double i = start, j = 0; i <= end; i++, j++)
+                for (double i = start, j = 0; i <= end; i + addition, j++)
                 {
                     double x = i, y = ReturnYValue(expression, i);
                     sw.WriteLine($"x = {x}, y = {y}");
